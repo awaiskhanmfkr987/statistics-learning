@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Statistics Calculator</title>
+<meta charset="UTF-8">
+<title>Advanced Statistics Calculator</title>
 <style>
 body{font-family:Arial;background:#f8fafc;margin:0}
 nav{background:#2563eb;padding:12px;text-align:center}
 nav a{color:white;margin:10px;text-decoration:none;font-weight:bold}
-section{background:white;margin:20px auto;padding:25px;
-max-width:900px;border-radius:10px}
-input,select,button{padding:8px;margin:6px;width:100%}
+section{
+background:white;
+margin:20px auto;
+padding:25px;
+max-width:1000px;
+border-radius:10px;
+line-height:1.8
+}
+textarea{width:100%;height:70px;margin:6px 0;padding:8px}
+button{padding:10px;background:#2563eb;color:white;border:none;border-radius:6px}
+.result{background:#eef2ff;padding:15px;border-radius:8px;margin-top:20px}
+h3{color:#2563eb}
 </style>
 </head>
 <body>
@@ -21,28 +31,107 @@ input,select,button{padding:8px;margin:6px;width:100%}
 </nav>
 
 <section>
-<h2>📊 Statistics Calculator</h2>
+<h2>📊 Advanced Statistics Calculator</h2>
 
-<label>Enter Data (comma separated)</label>
-<input id="data" placeholder="e.g. 10,12,14,16">
+<p><b>Instructions:</b>  
+Enter numeric data (comma-separated).  
+Use Sample 1 & 2 for two-sample tests.  
+Use Sample 3 for ANOVA / Kruskal-Wallis.</p>
 
-<button onclick="calc()">Calculate Descriptive Statistics</button>
+<label>Sample 1</label>
+<textarea id="s1" placeholder="e.g. 10,12,14,16"></textarea>
 
-<p id="out"></p>
+<label>Sample 2</label>
+<textarea id="s2" placeholder="e.g. 11,13,15,17"></textarea>
+
+<label>Sample 3 (optional)</label>
+<textarea id="s3" placeholder="e.g. 9,10,11,12"></textarea>
+
+<button onclick="analyze()">Analyze Data</button>
+
+<div class="result" id="out"></div>
 </section>
 
 <script>
-function calc(){
-let x=document.getElementById("data").value.split(",").map(Number);
-let n=x.length;
-let mean=x.reduce((a,b)=>a+b)/n;
-let variance=x.map(v=>(v-mean)**2).reduce((a,b)=>a+b)/n;
-let sd=Math.sqrt(variance);
+function parse(x){
+return x.split(",").map(Number).filter(n=>!isNaN(n));
+}
 
-document.getElementById("out").innerHTML=
-"Mean: "+mean.toFixed(2)+
-"<br>Variance: "+variance.toFixed(2)+
-"<br>Standard Deviation: "+sd.toFixed(2);
+function mean(x){return x.reduce((a,b)=>a+b,0)/x.length;}
+function variance(x){
+let m=mean(x);
+return x.map(v=>(v-m)**2).reduce((a,b)=>a+b)/(x.length-1);
+}
+
+function analyze(){
+let a=parse(document.getElementById("s1").value);
+let b=parse(document.getElementById("s2").value);
+let c=parse(document.getElementById("s3").value);
+
+let html="<h3>Results</h3>";
+
+/* ---------- DESCRIPTIVE ---------- */
+if(a.length>1){
+html+=`<b>Descriptive Statistics (Sample 1)</b><br>
+Mean = ${mean(a).toFixed(2)}<br>
+Variance = ${variance(a).toFixed(2)}<br><br>`;
+}
+
+/* ---------- TWO SAMPLE TESTS ---------- */
+if(a.length>1 && b.length>1){
+
+html+=`<b>Independent t-Test:</b><br>
+Result: <i>Not automatically computed</i><br>
+Reason: Requires normality & equal variance checks. Conceptual comparison possible.<br><br>`;
+
+html+=`<b>Mann-Whitney U Test:</b><br>
+Applicable (non-parametric).<br>
+Reason: Uses ranks; no distribution assumption.<br><br>`;
+
+}else{
+html+=`<b>Two-Sample Tests:</b><br>
+Not applicable – need two samples with size ≥ 2.<br><br>`;
+}
+
+/* ---------- PAIRED TEST ---------- */
+if(a.length===b.length && a.length>1){
+html+=`<b>Paired t-Test:</b><br>
+Applicable (paired data assumed).<br><br>`;
+}else{
+html+=`<b>Paired t-Test:</b><br>
+Not applicable – unequal sample sizes or pairing not defined.<br><br>`;
+}
+
+/* ---------- MULTI SAMPLE ---------- */
+if(a.length>1 && b.length>1 && c.length>1){
+html+=`<b>ANOVA:</b><br>
+Applicable – 3 independent groups detected.<br><br>
+
+<b>Kruskal-Wallis Test:</b><br>
+Applicable – non-parametric alternative.<br><br>`;
+}else{
+html+=`<b>ANOVA / Kruskal-Wallis:</b><br>
+Not applicable – need ≥ 3 samples with size ≥ 2.<br><br>`;
+}
+
+/* ---------- CORRELATION ---------- */
+if(a.length===b.length && a.length>2){
+html+=`<b>Pearson Correlation:</b><br>
+Applicable if linear & normal.<br><br>
+
+<b>Spearman Correlation:</b><br>
+Applicable – rank based.<br><br>`;
+}else{
+html+=`<b>Correlation Tests:</b><br>
+Not applicable – unequal lengths or insufficient data.<br><br>`;
+}
+
+/* ---------- CATEGORICAL ---------- */
+html+=`<b>Chi-Square / Binomial / Sign Tests:</b><br>
+Not computed here.<br>
+Reason: Require categorical or binary data, not raw numeric samples.<br><br>`;
+
+document.getElementById("out").innerHTML=html;
 }
 </script>
 
