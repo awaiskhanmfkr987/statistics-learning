@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Learn Statistics</title>
+<title>Learn Statistics – Manual Calculations</title>
 <style>
 body{font-family:Arial;background:#eef2ff;margin:0}
 nav{background:#2563eb;padding:12px;text-align:center}
 nav a{color:white;margin:10px;text-decoration:none;font-weight:bold}
-section{background:white;margin:20px auto;padding:20px;
-max-width:900px;border-radius:10px}
+section{background:white;margin:20px auto;padding:25px;
+max-width:1000px;border-radius:10px;line-height:1.7}
+h2,h3{color:#2563eb}
 </style>
 </head>
 <body>
@@ -20,35 +21,57 @@ max-width:900px;border-radius:10px}
 </nav>
 
 <section>
-<h2>📘 Learn Statistics</h2>
+<h2>📘 Learn Statistics – Manual Calculation Guide</h2>
 
-<h3>Descriptive Statistics</h3>
-<p>Mean, Median, Mode, Variance, Standard Deviation.</p>
+<!-- ================== DESCRIPTIVE ================== -->
+<h3>1️⃣ Descriptive Statistics</h3>
 
-<h3>Parametric Tests</h3>
-<ul>
-<li>One-sample t-test</li>
-<li>Independent t-test</li>
-<li>Paired t-test</li>
-<li>ANOVA</li>
-<li>Pearson Correlation</li>
-</ul>
+<b>Mean</b><br>
+Formula:  X̄ = ΣX / n  
+<br>Steps:
+<ol>
+<li>Add all observations</li>
+<li>Divide by number of observations</li>
+</ol>
 
-<h3>Non-Parametric Tests</h3>
-<ul>
-<li>Mann–Whitney U</li>
-<li>Wilcoxon Signed Rank</li>
-<li>Kruskal–Wallis</li>
-<li>Spearman Correlation</li>
-</ul>
+<b>Variance</b><br>
+Formula:  σ² = Σ(X − X̄)² / n  
+<br>Steps:
+<ol>
+<li>Subtract mean from each value</li>
+<li>Square the differences</li>
+<li>Add them and divide by n</li>
+</ol>
 
-<h3>Categorical Tests</h3>
-<ul>
-<li>Chi-Square</li>
-<li>Binomial Test</li>
-<li>Sign Test</li>
-</ul>
+<b>Standard Deviation</b><br>
+Formula:  σ = √σ²
 
-</section>
-</body>
-</html>
+<hr>
+
+<!-- ================== PARAMETRIC ================== -->
+<h3>2️⃣ Parametric Tests (Manual Calculation)</h3>
+
+<b>One-Sample t-Test</b><br>
+Used to compare sample mean with population mean.
+
+Formula:
+t = (X̄ − μ) / (s / √n)
+
+Steps:
+<ol>
+<li>Calculate sample mean X̄</li>
+<li>Find standard deviation s</li>
+<li>Compute t-value</li>
+<li>Compare with critical t</li>
+</ol>
+
+<b>Independent t-Test</b><br>
+Used to compare two independent means.
+
+Formula:
+t = (X̄₁ − X̄₂) / √[(s₁²/n₁) + (s₂²/n₂)]
+
+Steps:
+<ol>
+<li>Calculate both means</li>
+<li>Calculate both variances</
