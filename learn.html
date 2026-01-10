@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Learn Statistics – Manual Calculations</title>
+<title>Learn Statistics – Concepts</title>
 <style>
 body{font-family:Arial;background:#eef2ff;margin:0}
 nav{background:#2563eb;padding:12px;text-align:center}
 nav a{color:white;margin:10px;text-decoration:none;font-weight:bold}
 section{background:white;margin:20px auto;padding:25px;
-max-width:1000px;border-radius:10px;line-height:1.7}
+max-width:1000px;border-radius:10px;line-height:1.8}
 h2,h3{color:#2563eb}
 </style>
 </head>
@@ -21,57 +21,36 @@ h2,h3{color:#2563eb}
 </nav>
 
 <section>
-<h2>📘 Learn Statistics – Manual Calculation Guide</h2>
+<h2>📘 Learn Statistics – Concepts of All Tests</h2>
 
-<!-- ================== DESCRIPTIVE ================== -->
-<h3>1️⃣ Descriptive Statistics</h3>
+<h3>1. Descriptive Statistics</h3>
+<p>Descriptive statistics summarize data using numerical measures such as mean, median, variance, and standard deviation.</p>
 
-<b>Mean</b><br>
-Formula:  X̄ = ΣX / n  
-<br>Steps:
-<ol>
-<li>Add all observations</li>
-<li>Divide by number of observations</li>
-</ol>
+<h3>2. Parametric Tests</h3>
+<ul>
+<li><b>One-sample t-test:</b> Tests whether a sample mean differs from a known population mean.</li>
+<li><b>Independent t-test:</b> Compares means of two independent groups.</li>
+<li><b>Paired t-test:</b> Compares means of the same group before and after treatment.</li>
+<li><b>ANOVA:</b> Compares means of three or more groups.</li>
+<li><b>Pearson Correlation:</b> Measures linear relationship between two continuous variables.</li>
+</ul>
 
-<b>Variance</b><br>
-Formula:  σ² = Σ(X − X̄)² / n  
-<br>Steps:
-<ol>
-<li>Subtract mean from each value</li>
-<li>Square the differences</li>
-<li>Add them and divide by n</li>
-</ol>
+<h3>3. Non-Parametric Tests</h3>
+<ul>
+<li><b>Mann-Whitney U:</b> Alternative to independent t-test.</li>
+<li><b>Wilcoxon Signed Rank:</b> Alternative to paired t-test.</li>
+<li><b>Kruskal-Wallis:</b> Alternative to one-way ANOVA.</li>
+<li><b>Spearman Correlation:</b> Rank-based correlation method.</li>
+</ul>
 
-<b>Standard Deviation</b><br>
-Formula:  σ = √σ²
+<h3>4. Categorical / Distribution Tests</h3>
+<ul>
+<li><b>Chi-Square Test:</b> Association between categorical variables.</li>
+<li><b>Binomial Test:</b> Tests proportion of success/failure.</li>
+<li><b>Sign Test:</b> Tests median difference.</li>
+<li><b>Kolmogorov-Smirnov Test:</b> Tests distributional fit.</li>
+</ul>
 
-<hr>
-
-<!-- ================== PARAMETRIC ================== -->
-<h3>2️⃣ Parametric Tests (Manual Calculation)</h3>
-
-<b>One-Sample t-Test</b><br>
-Used to compare sample mean with population mean.
-
-Formula:
-t = (X̄ − μ) / (s / √n)
-
-Steps:
-<ol>
-<li>Calculate sample mean X̄</li>
-<li>Find standard deviation s</li>
-<li>Compute t-value</li>
-<li>Compare with critical t</li>
-</ol>
-
-<b>Independent t-Test</b><br>
-Used to compare two independent means.
-
-Formula:
-t = (X̄₁ − X̄₂) / √[(s₁²/n₁) + (s₂²/n₂)]
-
-Steps:
-<ol>
-<li>Calculate both means</li>
-<li>Calculate both variances</
+</section>
+</body>
+</html>
