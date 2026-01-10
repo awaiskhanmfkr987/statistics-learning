@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Learn Statistics – Definitions & Explanations</title>
+<title>Learn Advanced Statistics – Definitions & Explanations</title>
 <style>
 body{font-family:Arial,Helvetica,sans-serif;background:#eef2ff;margin:0}
 nav{background:#2563eb;padding:12px;text-align:center}
@@ -29,138 +29,72 @@ p{margin-bottom:15px}
 </nav>
 
 <section>
+<h2>📘 Learn Advanced Statistics – Concepts & Definitions</h2>
 
-<h2>📘 Learn Statistics – Concepts, Definitions & Explanations</h2>
+<!-- ================= Z-TESTS ================= -->
+<h3>1. Z-Tests</h3>
+<p>Used primarily for large sample sizes (n>30) or when the population variance is known.</p>
 
-<!-- ================= DESCRIPTIVE ================= -->
-<h3>1. Descriptive Statistics</h3>
+<p><b>One-Sample Z-Test:</b> Compares a sample mean to a known population mean to determine if there is a significant difference.</p>
 
-<p>
-<b>Descriptive Statistics</b> are used to summarize, organize, and describe the main features of a dataset.
-They do not make predictions or generalizations beyond the data.
-</p>
+<p><b>Two-Sample Z-Test:</b> Compares the means of two independent samples to determine whether they differ significantly.</p>
 
-<p>
-<b>Mean:</b> The arithmetic average of all observations. It represents the central value of the data.
-</p>
-
-<p>
-<b>Median:</b> The middle value when data is arranged in ascending or descending order. It is robust to outliers.
-</p>
-
-<p>
-<b>Variance:</b> Measures how far observations spread from the mean by averaging squared deviations.
-</p>
-
-<p>
-<b>Standard Deviation:</b> The square root of variance. It indicates the average distance of observations from the mean.
-</p>
+<p><b>Z-Proportion Test:</b> Compares the population proportions to test if they differ from each other.</p>
 
 <hr>
 
-<!-- ================= PARAMETRIC ================= -->
-<h3>2. Parametric Tests</h3>
+<!-- ================= STUDENT’S T-TESTS ================= -->
+<h3>2. Student’s T-Tests</h3>
+<p>Used for smaller sample sizes or when the population variance is unknown.</p>
 
-<p>
-<b>Parametric tests</b> are statistical tests that assume the data follows a specific distribution,
-usually the normal distribution, and that the data is measured on an interval or ratio scale.
-</p>
+<p><b>One-Sample T-Test:</b> Compares a sample mean to a hypothesized value.</p>
 
-<p>
-<b>One-Sample t-Test:</b><br>
-This test is used to determine whether the mean of a single sample is significantly different
-from a known or hypothesized population mean.
-</p>
+<p><b>Independent (Two-Sample) T-Test:</b> Compares the means of two distinct independent groups.</p>
 
-<p>
-<b>Independent t-Test:</b><br>
-This test compares the means of two independent groups to determine whether there is a statistically
-significant difference between them.
-</p>
+<p><b>Paired (Dependent) T-Test:</b> Compares means from the same group measured at different times or under different conditions.</p>
 
-<p>
-<b>Paired t-Test:</b><br>
-This test compares two related measurements taken from the same individuals, such as before and after treatment.
-</p>
-
-<p>
-<b>ANOVA (Analysis of Variance):</b><br>
-ANOVA is used to compare the means of three or more independent groups to determine whether at least one group
-mean differs significantly from the others.
-</p>
-
-<p>
-<b>Pearson Correlation:</b><br>
-This test measures the strength and direction of the linear relationship between two continuous variables.
-The correlation coefficient ranges from −1 to +1.
-</p>
+<p><b>Welch’s T-Test:</b> A variation of the independent t-test used when equal variance assumption (homoscedasticity) is violated.</p>
 
 <hr>
 
-<!-- ================= NON-PARAMETRIC ================= -->
-<h3>3. Non-Parametric Tests</h3>
+<!-- ================= ANOVA ================= -->
+<h3>3. Analysis of Variance (ANOVA)</h3>
+<p>Used to compare the means of three or more groups.</p>
 
-<p>
-<b>Non-parametric tests</b> do not require assumptions of normality and are suitable for ordinal data,
-skewed distributions, or small sample sizes.
-</p>
+<p><b>One-Way ANOVA:</b> Compares means across three or more groups based on one factor.</p>
 
-<p>
-<b>Mann–Whitney U Test:</b><br>
-This test is a non-parametric alternative to the independent t-test and compares the distributions of two independent groups using ranks.
-</p>
+<p><b>Two-Way ANOVA:</b> Compares means based on two independent factors and examines interaction between them.</p>
 
-<p>
-<b>Wilcoxon Signed Rank Test:</b><br>
-This test is the non-parametric alternative to the paired t-test and is used when the differences between paired observations
-are not normally distributed.
-</p>
+<p><b>Repeated Measures ANOVA:</b> Used when the same subjects are measured multiple times under different conditions.</p>
 
-<p>
-<b>Kruskal–Wallis Test:</b><br>
-This test extends the Mann–Whitney U test to more than two groups and serves as a non-parametric alternative to one-way ANOVA.
-</p>
+<p><b>MANOVA (Multivariate ANOVA):</b> Extension of ANOVA for multiple dependent variables.</p>
 
-<p>
-<b>Spearman Rank Correlation:</b><br>
-This test measures the strength and direction of a monotonic relationship between two variables using ranked data.
-</p>
+<p><b>ANCOVA (Analysis of Covariance):</b> Combines ANOVA and regression to control for effects of continuous covariates.</p>
 
 <hr>
 
-<!-- ================= CATEGORICAL ================= -->
-<h3>4. Categorical / Distribution Tests</h3>
+<!-- ================= CORRELATION & REGRESSION ================= -->
+<h3>4. Correlation and Regression</h3>
 
-<p>
-These tests are used for categorical data or to examine whether data follows a specific probability distribution.
-</p>
+<p><b>Pearson’s Correlation (r):</b> Measures strength and direction of linear relationship between two continuous variables.</p>
 
-<p>
-<b>Chi-Square Test:</b><br>
-This test examines whether there is a significant association or independence between two categorical variables.
-</p>
+<p><b>Linear Regression:</b> Models the relationship between a dependent variable and one or more independent variables; can be used for prediction and interpretation of associations.</p>
 
-<p>
-<b>Binomial Test:</b><br>
-This test evaluates whether the observed proportion of successes differs significantly from a theoretical proportion.
-</p>
+<hr>
 
-<p>
-<b>Sign Test:</b><br>
-This non-parametric test evaluates whether the median of a population differs from a specified value using only the direction of differences.
-</p>
+<!-- ================= OTHER PARAMETRIC TESTS ================= -->
+<h3>5. Other Parametric Tests</h3>
 
-<p>
-<b>Kolmogorov–Smirnov Test:</b><br>
-This test compares an observed distribution with a theoretical distribution to determine whether they differ significantly.
-</p>
+<p><b>F-Test:</b> Used to compare variances of two populations; also forms the basis for ANOVA.</p>
+
+<p><b>Chow Test:</b> Used in econometrics to determine if coefficients in two linear regressions on different datasets are equal.</p>
 
 <hr>
 
 <h3>🎯 Summary</h3>
 <p>
-This learning section provides a conceptual foundation of statistical methods, helping students understand
-<b>what test to use, when to use it, and why it is used</b>.
+This page provides detailed conceptual understanding of advanced parametric tests including <b>Z-tests, T-tests, ANOVA, correlation, regression, and other parametric methods</b>.  
+It explains <b>when to use each test, assumptions required, and the key purpose</b>.
 </p>
 
 </section>
