@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Statistics Theory</title>
+<title>Statistics Theory & Assumptions</title>
 <style>
-body{font-family:Arial;background:#eef2ff;margin:0;padding:0}
+body{font-family:Arial;background:#eef2ff;margin:0}
 nav{background:#2563eb;padding:12px;text-align:center}
 nav a{color:white;margin:10px;text-decoration:none;font-weight:bold}
-nav a:hover{background:#1e40af}
-.card{background:white;padding:20px;margin:30px auto;border-radius:10px;max-width:900px;box-shadow:0 4px 10px rgba(0,0,0,0.08)}
-h2{color:#2563eb;}
-ul{line-height:1.6;}
+section{background:white;margin:20px auto;padding:25px;
+max-width:1000px;border-radius:10px;line-height:1.8}
+h2,h3{color:#2563eb}
 </style>
 </head>
 <body>
@@ -23,23 +20,36 @@ ul{line-height:1.6;}
 <a href="theory.html">Theory</a>
 </nav>
 
-<div class="card">
-<h2>📘 Theory of Statistical Tests</h2>
+<section>
+<h2>📘 Theory, Assumptions & Interpretation</h2>
 
-<h3>Parametric Tests</h3>
-<p>Assumptions: Normal distribution, equal variances, interval/ratio data. Examples: t-tests, ANOVA.</p>
+<h3>Parametric Tests – Assumptions</h3>
+<ul>
+<li>Data is normally distributed</li>
+<li>Independent observations</li>
+<li>Equal variances (for t-tests & ANOVA)</li>
+</ul>
 
-<h3>Non-Parametric Tests</h3>
-<p>Used when assumptions of parametric tests are not met. Examples: Mann-Whitney U, Wilcoxon, Kruskal-Wallis.</p>
-
-<h3>Categorical / Distribution Tests</h3>
-<p>Examples: Chi-Square, Binomial Test, Sign Test, Kolmogorov-Smirnov.</p>
+<h3>Non-Parametric Tests – Assumptions</h3>
+<ul>
+<li>No normality required</li>
+<li>Ordinal or ranked data allowed</li>
+<li>Robust to outliers</li>
+</ul>
 
 <h3>Hypothesis Testing</h3>
-<p><b>H₀</b>: Null hypothesis — no effect or difference.<br>
-<b>H₁</b>: Alternative hypothesis — effect exists.<br>
-Interpretation: Compare test statistic to critical value or p-value &lt; α to reject H₀.</p>
+<p><b>Null Hypothesis (H₀):</b> No effect or difference exists.</p>
+<p><b>Alternative Hypothesis (H₁):</b> Effect or difference exists.</p>
 
-</div>
+<h3>Decision Rules</h3>
+<ul>
+<li>If p-value &lt; 0.05 → Reject H₀</li>
+<li>If test statistic &gt; critical value → Reject H₀</li>
+</ul>
+
+<h3>Interpretation</h3>
+<p>Statistical significance indicates evidence against H₀, not practical importance.</p>
+
+</section>
 </body>
 </html>
