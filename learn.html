@@ -1,14 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Learn Statistics – Concepts</title>
+<meta charset="UTF-8">
+<title>Learn Statistics – Definitions & Explanations</title>
 <style>
-body{font-family:Arial;background:#eef2ff;margin:0}
+body{font-family:Arial,Helvetica,sans-serif;background:#eef2ff;margin:0}
 nav{background:#2563eb;padding:12px;text-align:center}
 nav a{color:white;margin:10px;text-decoration:none;font-weight:bold}
-section{background:white;margin:20px auto;padding:25px;
-max-width:1000px;border-radius:10px;line-height:1.8}
+section{
+background:white;
+margin:20px auto;
+padding:30px;
+max-width:1000px;
+border-radius:10px;
+line-height:1.9
+}
 h2,h3{color:#2563eb}
+p{margin-bottom:15px}
 </style>
 </head>
 <body>
@@ -21,35 +29,139 @@ h2,h3{color:#2563eb}
 </nav>
 
 <section>
-<h2>📘 Learn Statistics – Concepts of All Tests</h2>
 
+<h2>📘 Learn Statistics – Concepts, Definitions & Explanations</h2>
+
+<!-- ================= DESCRIPTIVE ================= -->
 <h3>1. Descriptive Statistics</h3>
-<p>Descriptive statistics summarize data using numerical measures such as mean, median, variance, and standard deviation.</p>
 
+<p>
+<b>Descriptive Statistics</b> are used to summarize, organize, and describe the main features of a dataset.
+They do not make predictions or generalizations beyond the data.
+</p>
+
+<p>
+<b>Mean:</b> The arithmetic average of all observations. It represents the central value of the data.
+</p>
+
+<p>
+<b>Median:</b> The middle value when data is arranged in ascending or descending order. It is robust to outliers.
+</p>
+
+<p>
+<b>Variance:</b> Measures how far observations spread from the mean by averaging squared deviations.
+</p>
+
+<p>
+<b>Standard Deviation:</b> The square root of variance. It indicates the average distance of observations from the mean.
+</p>
+
+<hr>
+
+<!-- ================= PARAMETRIC ================= -->
 <h3>2. Parametric Tests</h3>
-<ul>
-<li><b>One-sample t-test:</b> Tests whether a sample mean differs from a known population mean.</li>
-<li><b>Independent t-test:</b> Compares means of two independent groups.</li>
-<li><b>Paired t-test:</b> Compares means of the same group before and after treatment.</li>
-<li><b>ANOVA:</b> Compares means of three or more groups.</li>
-<li><b>Pearson Correlation:</b> Measures linear relationship between two continuous variables.</li>
-</ul>
 
+<p>
+<b>Parametric tests</b> are statistical tests that assume the data follows a specific distribution,
+usually the normal distribution, and that the data is measured on an interval or ratio scale.
+</p>
+
+<p>
+<b>One-Sample t-Test:</b><br>
+This test is used to determine whether the mean of a single sample is significantly different
+from a known or hypothesized population mean.
+</p>
+
+<p>
+<b>Independent t-Test:</b><br>
+This test compares the means of two independent groups to determine whether there is a statistically
+significant difference between them.
+</p>
+
+<p>
+<b>Paired t-Test:</b><br>
+This test compares two related measurements taken from the same individuals, such as before and after treatment.
+</p>
+
+<p>
+<b>ANOVA (Analysis of Variance):</b><br>
+ANOVA is used to compare the means of three or more independent groups to determine whether at least one group
+mean differs significantly from the others.
+</p>
+
+<p>
+<b>Pearson Correlation:</b><br>
+This test measures the strength and direction of the linear relationship between two continuous variables.
+The correlation coefficient ranges from −1 to +1.
+</p>
+
+<hr>
+
+<!-- ================= NON-PARAMETRIC ================= -->
 <h3>3. Non-Parametric Tests</h3>
-<ul>
-<li><b>Mann-Whitney U:</b> Alternative to independent t-test.</li>
-<li><b>Wilcoxon Signed Rank:</b> Alternative to paired t-test.</li>
-<li><b>Kruskal-Wallis:</b> Alternative to one-way ANOVA.</li>
-<li><b>Spearman Correlation:</b> Rank-based correlation method.</li>
-</ul>
 
+<p>
+<b>Non-parametric tests</b> do not require assumptions of normality and are suitable for ordinal data,
+skewed distributions, or small sample sizes.
+</p>
+
+<p>
+<b>Mann–Whitney U Test:</b><br>
+This test is a non-parametric alternative to the independent t-test and compares the distributions of two independent groups using ranks.
+</p>
+
+<p>
+<b>Wilcoxon Signed Rank Test:</b><br>
+This test is the non-parametric alternative to the paired t-test and is used when the differences between paired observations
+are not normally distributed.
+</p>
+
+<p>
+<b>Kruskal–Wallis Test:</b><br>
+This test extends the Mann–Whitney U test to more than two groups and serves as a non-parametric alternative to one-way ANOVA.
+</p>
+
+<p>
+<b>Spearman Rank Correlation:</b><br>
+This test measures the strength and direction of a monotonic relationship between two variables using ranked data.
+</p>
+
+<hr>
+
+<!-- ================= CATEGORICAL ================= -->
 <h3>4. Categorical / Distribution Tests</h3>
-<ul>
-<li><b>Chi-Square Test:</b> Association between categorical variables.</li>
-<li><b>Binomial Test:</b> Tests proportion of success/failure.</li>
-<li><b>Sign Test:</b> Tests median difference.</li>
-<li><b>Kolmogorov-Smirnov Test:</b> Tests distributional fit.</li>
-</ul>
+
+<p>
+These tests are used for categorical data or to examine whether data follows a specific probability distribution.
+</p>
+
+<p>
+<b>Chi-Square Test:</b><br>
+This test examines whether there is a significant association or independence between two categorical variables.
+</p>
+
+<p>
+<b>Binomial Test:</b><br>
+This test evaluates whether the observed proportion of successes differs significantly from a theoretical proportion.
+</p>
+
+<p>
+<b>Sign Test:</b><br>
+This non-parametric test evaluates whether the median of a population differs from a specified value using only the direction of differences.
+</p>
+
+<p>
+<b>Kolmogorov–Smirnov Test:</b><br>
+This test compares an observed distribution with a theoretical distribution to determine whether they differ significantly.
+</p>
+
+<hr>
+
+<h3>🎯 Summary</h3>
+<p>
+This learning section provides a conceptual foundation of statistical methods, helping students understand
+<b>what test to use, when to use it, and why it is used</b>.
+</p>
 
 </section>
 </body>
