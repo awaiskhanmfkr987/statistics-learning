@@ -6,9 +6,9 @@
 body{font-family:Arial;background:#f8fafc;margin:0}
 nav{background:#2563eb;padding:12px;text-align:center}
 nav a{color:white;margin:10px;text-decoration:none;font-weight:bold}
-section{background:white;margin:30px auto;padding:20px;
+section{background:white;margin:20px auto;padding:25px;
 max-width:900px;border-radius:10px}
-input,button{padding:8px;margin:5px;width:90%}
+input,select,button{padding:8px;margin:6px;width:100%}
 </style>
 </head>
 <body>
@@ -21,23 +21,28 @@ input,button{padding:8px;margin:5px;width:90%}
 </nav>
 
 <section>
-<h2>📐 Statistics Calculator</h2>
+<h2>📊 Statistics Calculator</h2>
 
-<p>Enter numbers (comma separated):</p>
-<input id="data" placeholder="Example: 10,12,14,16">
+<label>Enter Data (comma separated)</label>
+<input id="data" placeholder="e.g. 10,12,14,16">
 
-<button onclick="calc()">Calculate Mean & SD</button>
+<button onclick="calc()">Calculate Descriptive Statistics</button>
 
-<p id="result"></p>
+<p id="out"></p>
 </section>
 
 <script>
 function calc(){
-let d=document.getElementById("data").value.split(",").map(Number);
-let mean=d.reduce((a,b)=>a+b,0)/d.length;
-let sd=Math.sqrt(d.map(x=>(x-mean)**2).reduce((a,b)=>a+b)/d.length);
-document.getElementById("result").innerHTML=
-"Mean = "+mean.toFixed(2)+"<br>SD = "+sd.toFixed(2);
+let x=document.getElementById("data").value.split(",").map(Number);
+let n=x.length;
+let mean=x.reduce((a,b)=>a+b)/n;
+let variance=x.map(v=>(v-mean)**2).reduce((a,b)=>a+b)/n;
+let sd=Math.sqrt(variance);
+
+document.getElementById("out").innerHTML=
+"Mean: "+mean.toFixed(2)+
+"<br>Variance: "+variance.toFixed(2)+
+"<br>Standard Deviation: "+sd.toFixed(2);
 }
 </script>
 
