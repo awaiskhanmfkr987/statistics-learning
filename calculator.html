@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Statistics Calculator</title>
+<style>
+body{font-family:Arial;background:#f8fafc;margin:0}
+nav{background:#2563eb;padding:12px;text-align:center}
+nav a{color:white;margin:10px;text-decoration:none;font-weight:bold}
+section{background:white;margin:30px auto;padding:20px;
+max-width:900px;border-radius:10px}
+input,button{padding:8px;margin:5px;width:90%}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="learn.html">Learn</a>
+<a href="calculator.html">Calculator</a>
+<a href="theory.html">Theory</a>
+</nav>
+
+<section>
+<h2>📐 Statistics Calculator</h2>
+
+<p>Enter numbers (comma separated):</p>
+<input id="data" placeholder="Example: 10,12,14,16">
+
+<button onclick="calc()">Calculate Mean & SD</button>
+
+<p id="result"></p>
+</section>
+
+<script>
+function calc(){
+let d=document.getElementById("data").value.split(",").map(Number);
+let mean=d.reduce((a,b)=>a+b,0)/d.length;
+let sd=Math.sqrt(d.map(x=>(x-mean)**2).reduce((a,b)=>a+b)/d.length);
+document.getElementById("result").innerHTML=
+"Mean = "+mean.toFixed(2)+"<br>SD = "+sd.toFixed(2);
+}
+</script>
+
+</body>
+</html>
