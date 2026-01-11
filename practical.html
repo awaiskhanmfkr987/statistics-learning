@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practical Statistical Implementation</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; background: #fdfdfd; }
+  h1,h2,h3 { color: #2c3e50; }
+  a { text-decoration: none; color: #2980b9; }
+  a:hover { text-decoration: underline; }
+  pre { background: #eee; padding: 10px; border-radius: 5px; }
+</style>
+</head>
+<body>
+  <h1>V. Practical Considerations & Implementation</h1>
+
+  <h2>1. Choosing the Right Test</h2>
+  <ul>
+    <li>Determine data type: <strong>continuous, categorical, ordinal</strong></li>
+    <li>Check distribution: <strong>normality vs non-normality</strong></li>
+    <li>Sample size: Small sample → nonparametric methods may be safer</li>
+    <li>Paired vs independent samples</li>
+    <li>Purpose: Compare means, proportions, variances, or relationships</li>
+  </ul>
+
+  <h2>2. Effect Sizes</h2>
+  <p>Effect size quantifies the magnitude of a phenomenon, independent of sample size.</p>
+  <ul>
+    <li>Cohen's d: <pre>d = (M₁ - M₂) / SDpooled</pre></li>
+    <li>Correlation coefficient: <pre>r = cov(X,Y) / (σX * σY)</pre></li>
+    <li>Odds ratio: <pre>OR = (a/b)/(c/d)</pre></li>
+    <li>Eta-squared for ANOVA: <pre>η² = SSbetween / SStotal</pre></li>
+  </ul>
+
+  <h2>3. Multiple Testing & Adjustments</h2>
+  <ul>
+    <li>Bonferroni correction: αadjusted = α / number of tests</li>
+    <li>Holm-Bonferroni: Stepwise and less conservative</li>
+    <li>False Discovery Rate (FDR) – Benjamini-Hochberg method</li>
+  </ul>
+
+  <h2>4. Sample Size & Power Analysis</h2>
+  <p>Determines required sample size to detect effect with confidence.</p>
+  <ul>
+    <li>Power (1-β): Probability to detect true effect</li>
+    <li>Depends on α, effect size, variability, and sample size</li>
+    <li>Tools: G*Power, R packages (pwr)</li>
+  </ul>
+
+  <h2>5. Assumptions & Diagnostics</h2>
+  <h3>Normality Checks</h3>
+  <ul>
+    <li>Shapiro-Wilk test</li>
+    <li>Kolmogorov-Smirnov test</li>
+    <li>QQ-plots & histograms</li>
+  </ul>
+  <h3>Homogeneity of Variance</h3>
+  <ul>
+    <li>Levene's test</li>
+    <li>Brown-Forsythe test</li>
+  </ul>
+  <h3>Independence</h3>
+  <ul>
+    <li>Check study design & randomization</li>
+  </ul>
+
+  <h2>6. Implementation Tips</h2>
+  <ul>
+    <li>Always visualize data first (boxplots, histograms, scatterplots)</li>
+    <li>Use robust methods if assumptions fail</li>
+    <li>Report both p-values and effect sizes</li>
+    <li>Document every step for reproducibility</li>
+  </ul>
+
+  <p><a href="index.html">⬅ Back to Home</a></p>
+</body>
+</html>
