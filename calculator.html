@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Advanced Statistics Calculator</title>
+
 <style>
 body{font-family:Arial;background:#f8fafc;margin:0}
 nav{background:#2563eb;padding:12px;text-align:center}
 nav a{color:white;margin:10px;text-decoration:none;font-weight:bold}
+
 section{
 background:white;
 margin:20px auto;
@@ -15,12 +17,19 @@ max-width:1000px;
 border-radius:10px;
 line-height:1.8
 }
+
 textarea{width:100%;height:70px;margin:6px 0;padding:8px}
-button{padding:10px;background:#2563eb;color:white;border:none;border-radius:6px}
+button{padding:10px 16px;background:#2563eb;color:white;border:none;border-radius:6px}
+
 .result{background:#eef2ff;padding:15px;border-radius:8px;margin-top:20px}
+.assumptions{background:#f8fafc;padding:15px;border-radius:8px;margin-top:15px}
+.linkbox{background:#ecfeff;padding:10px;border-radius:6px;margin-top:15px}
+
 h3{color:#2563eb}
+canvas{margin-top:20px;border:1px solid #cbd5e1}
 </style>
 </head>
+
 <body>
 
 <nav>
@@ -33,105 +42,175 @@ h3{color:#2563eb}
 <section>
 <h2>📊 Advanced Statistics Calculator</h2>
 
-<p><b>Instructions:</b>  
-Enter numeric data (comma-separated).  
-Use Sample 1 & 2 for two-sample tests.  
-Use Sample 3 for ANOVA / Kruskal-Wallis.</p>
+<p><b>Instructions:</b><br>
+• Enter numeric data (comma-separated)<br>
+• Use Sample 1 & 2 for two-sample tests<br>
+• Use Sample 3 for ANOVA / Kruskal-Wallis</p>
 
 <label>Sample 1</label>
-<textarea id="s1" placeholder="e.g. 10,12,14,16"></textarea>
+<textarea id="s1"></textarea>
 
 <label>Sample 2</label>
-<textarea id="s2" placeholder="e.g. 11,13,15,17"></textarea>
+<textarea id="s2"></textarea>
 
 <label>Sample 3 (optional)</label>
-<textarea id="s3" placeholder="e.g. 9,10,11,12"></textarea>
+<textarea id="s3"></textarea>
 
 <button onclick="analyze()">Analyze Data</button>
 
+<div class="linkbox">
+📘 <b>Theory Link:</b>
+<a id="theoryLink" href="theory.html" target="_blank">Open related theory</a>
+</div>
+
+<div class="assumptions" id="assumptions"></div>
 <div class="result" id="out"></div>
+
+<canvas id="plot" width="800" height="300"></canvas>
 </section>
 
 <script>
+/* ---------- BASIC FUNCTIONS ---------- */
 function parse(x){
-return x.split(",").map(Number).filter(n=>!isNaN(n));
+ return x.split(",").map(Number).filter(n=>!isNaN(n));
 }
 
-function mean(x){return x.reduce((a,b)=>a+b,0)/x.length;}
+function mean(x){
+ return x.reduce((a,b)=>a+b,0)/x.length;
+}
+
 function variance(x){
-let m=mean(x);
-return x.map(v=>(v-m)**2).reduce((a,b)=>a+b)/(x.length-1);
+ let m=mean(x);
+ return x.reduce((a,b)=>a+(b-m)**2,0)/(x.length-1);
 }
 
+/* ---------- ASSUMPTION CHECKS ---------- */
+function checkAssumptions(a,b){
+ let notes=[];
+
+ if(a.length<3)
+  notes.push("❌ Sample size too small for reliable inference.");
+
+ if(a.length<30)
+  notes.push("⚠ Small sample: normality assumption important.");
+
+ if(b){
+  let v1=variance(a), v2=variance(b);
+  if(Math.max(v1,v2)/Math.min(v1,v2)>4)
+   notes.push("⚠ Unequal variances → Welch’s t-test recommended.");
+ }
+
+ if(notes.length===0)
+  notes.push("✅ Assumptions reasonably satisfied.");
+
+ document.getElementById("assumptions").innerHTML =
+ "<h3>Assumption Check</h3>"+notes.join("<br>");
+}
+
+/* ---------- THEORY AUTO LINK ---------- */
+function setTheory(id){
+ document.getElementById("theoryLink").href =
+ "theory.html#"+id;
+}
+
+/* ---------- HISTOGRAM ---------- */
+function drawHistogram(data){
+ const c=document.getElementById("plot");
+ const ctx=c.getContext("2d");
+ ctx.clearRect(0,0,c.width,c.height);
+
+ let min=Math.min(...data);
+ let max=Math.max(...data);
+ let bins=8;
+ let step=(max-min)/bins;
+ let freq=Array(bins).fill(0);
+
+ data.forEach(v=>{
+  let i=Math.min(Math.floor((v-min)/step),bins-1);
+  freq[i]++;
+ });
+
+ let bw=c.width/bins;
+ let maxF=Math.max(...freq);
+
+ for(let i=0;i<bins;i++){
+  let h=(freq[i]/maxF)*250;
+  ctx.fillStyle="#3b82f6";
+  ctx.fillRect(i*bw,280-h,bw-5,h);
+ }
+
+ let m=mean(data);
+ let x=((m-min)/(max-min))*c.width;
+ ctx.strokeStyle="red";
+ ctx.beginPath();
+ ctx.moveTo(x,0);
+ ctx.lineTo(x,300);
+ ctx.stroke();
+}
+
+/* ---------- MAIN ANALYSIS ---------- */
 function analyze(){
-let a=parse(document.getElementById("s1").value);
-let b=parse(document.getElementById("s2").value);
-let c=parse(document.getElementById("s3").value);
+ let a=parse(s1.value);
+ let b=parse(s2.value);
+ let c=parse(s3.value);
 
-let html="<h3>Results</h3>";
+ let html="<h3>Results</h3>";
 
-/* ---------- DESCRIPTIVE ---------- */
-if(a.length>1){
-html+=`<b>Descriptive Statistics (Sample 1)</b><br>
-Mean = ${mean(a).toFixed(2)}<br>
-Variance = ${variance(a).toFixed(2)}<br><br>`;
-}
+ if(a.length>1){
+  html+=`<b>Descriptive Statistics (Sample 1)</b><br>
+  Mean = ${mean(a).toFixed(2)}<br>
+  Variance = ${variance(a).toFixed(2)}<br><br>`;
+ }
 
-/* ---------- TWO SAMPLE TESTS ---------- */
-if(a.length>1 && b.length>1){
+ /* TWO SAMPLE */
+ if(a.length>1 && b.length>1){
+  html+=`<b>Independent t-Test:</b><br>
+  Applicable if normal & equal variances.<br><br>`;
 
-html+=`<b>Independent t-Test:</b><br>
-Result: <i>Not automatically computed</i><br>
-Reason: Requires normality & equal variance checks. Conceptual comparison possible.<br><br>`;
+  html+=`<b>Mann-Whitney U Test:</b><br>
+  Applicable (non-parametric).<br><br>`;
 
-html+=`<b>Mann-Whitney U Test:</b><br>
-Applicable (non-parametric).<br>
-Reason: Uses ranks; no distribution assumption.<br><br>`;
+  checkAssumptions(a,b);
+  setTheory("independent-t");
+  drawHistogram(a.concat(b));
 
-}else{
-html+=`<b>Two-Sample Tests:</b><br>
-Not applicable – need two samples with size ≥ 2.<br><br>`;
-}
+ } else {
+  html+=`<b>Two-sample tests not applicable</b><br>
+  Reason: Need two samples (n ≥ 2).<br><br>`;
+ }
 
-/* ---------- PAIRED TEST ---------- */
-if(a.length===b.length && a.length>1){
-html+=`<b>Paired t-Test:</b><br>
-Applicable (paired data assumed).<br><br>`;
-}else{
-html+=`<b>Paired t-Test:</b><br>
-Not applicable – unequal sample sizes or pairing not defined.<br><br>`;
-}
+ /* PAIRED */
+ if(a.length===b.length && a.length>1){
+  html+=`<b>Paired t-Test:</b><br>
+  Applicable (paired design).<br><br>`;
+ }
 
-/* ---------- MULTI SAMPLE ---------- */
-if(a.length>1 && b.length>1 && c.length>1){
-html+=`<b>ANOVA:</b><br>
-Applicable – 3 independent groups detected.<br><br>
+ /* MULTI SAMPLE */
+ if(a.length>1 && b.length>1 && c.length>1){
+  html+=`<b>ANOVA:</b><br>
+  Applicable – 3 groups detected.<br><br>
 
-<b>Kruskal-Wallis Test:</b><br>
-Applicable – non-parametric alternative.<br><br>`;
-}else{
-html+=`<b>ANOVA / Kruskal-Wallis:</b><br>
-Not applicable – need ≥ 3 samples with size ≥ 2.<br><br>`;
-}
+  <b>Kruskal-Wallis:</b><br>
+  Applicable – non-parametric alternative.<br><br>`;
+  setTheory("anova");
+ }
 
-/* ---------- CORRELATION ---------- */
-if(a.length===b.length && a.length>2){
-html+=`<b>Pearson Correlation:</b><br>
-Applicable if linear & normal.<br><br>
+ /* CORRELATION */
+ if(a.length===b.length && a.length>2){
+  html+=`<b>Pearson Correlation:</b><br>
+  Applicable if linear & normal.<br><br>
 
-<b>Spearman Correlation:</b><br>
-Applicable – rank based.<br><br>`;
-}else{
-html+=`<b>Correlation Tests:</b><br>
-Not applicable – unequal lengths or insufficient data.<br><br>`;
-}
+  <b>Spearman Correlation:</b><br>
+  Applicable (rank-based).<br><br>`;
+  setTheory("correlation");
+ }
 
-/* ---------- CATEGORICAL ---------- */
-html+=`<b>Chi-Square / Binomial / Sign Tests:</b><br>
-Not computed here.<br>
-Reason: Require categorical or binary data, not raw numeric samples.<br><br>`;
+ /* CATEGORICAL */
+ html+=`<b>Categorical Tests:</b><br>
+ Not computed.<br>
+ Reason: Require categorical or binary data.<br>`;
 
-document.getElementById("out").innerHTML=html;
+ out.innerHTML=html;
 }
 </script>
 
