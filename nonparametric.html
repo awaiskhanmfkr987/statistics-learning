@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nonparametric Tests</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; background: #fdfdfd; }
+  h1,h2,h3 { color: #2c3e50; }
+  a { text-decoration: none; color: #2980b9; }
+  a:hover { text-decoration: underline; }
+  pre { background: #eee; padding: 10px; border-radius: 5px; }
+</style>
+</head>
+<body>
+  <h1>III. Nonparametric Tests: Comprehensive Theory</h1>
+
+  <h2>1. Overview of Nonparametric Methods</h2>
+  <p>Nonparametric tests are used when data do not satisfy parametric assumptions (normality, equal variance, interval scale). They often use ranks instead of raw data and are robust to outliers.</p>
+
+  <h2>2. Common Nonparametric Tests</h2>
+
+  <h3>A. Sign Test</h3>
+  <p>Tests median of a single sample against a hypothesized value or compares paired samples. Only the direction of difference is considered.</p>
+  <pre>n₊ = number of positive differences</pre>
+  <pre>n₋ = number of negative differences</pre>
+
+  <h3>B. Wilcoxon Signed-Rank Test</h3>
+  <p>Tests median differences of paired data considering ranks and signs.</p>
+  <pre>W = sum of ranks for positive differences</pre>
+
+  <h3>C. Mann–Whitney U Test</h3>
+  <p>Compares two independent samples to check if they come from the same distribution.</p>
+  <pre>U₁ = n₁*n₂ + (n₁*(n₁+1))/2 - R₁</pre>
+  <pre>U₂ = n₁*n₂ + (n₂*(n₂+1))/2 - R₂</pre>
+  <p>Where R₁ and R₂ are sums of ranks for each group.</p>
+
+  <h3>D. Kruskal–Wallis Test</h3>
+  <p>Nonparametric alternative to one-way ANOVA for >2 groups.</p>
+  <pre>H = (12 / (N*(N+1))) * Σ(Ri²/ni) - 3*(N+1)</pre>
+  <p>Where Ri is sum of ranks for group i, ni is sample size of group i, N is total sample size.</p>
+
+  <h3>E. Friedman Test</h3>
+  <p>Nonparametric equivalent of repeated measures ANOVA.</p>
+  <pre>χ²_F = (12 / (n*k*(k+1))) * Σ(Rj²) - 3*n*(k+1)</pre>
+  <p>Where Rj is sum of ranks in block j, n = number of blocks, k = number of treatments.</p>
+
+  <h2>3. Chi-Square Test</h2>
+  <p>Tests independence or goodness-of-fit for categorical data.</p>
+  <pre>χ² = Σ((O - E)² / E)</pre>
+  <p>Where O = observed frequency, E = expected frequency.</p>
+
+  <h2>4. Advantages of Nonparametric Tests</h2>
+  <ul>
+    <li>No strict assumption of normality.</li>
+    <li>Suitable for ordinal or ranked data.</li>
+    <li>Robust to outliers.</li>
+  </ul>
+
+  <h2>5. Limitations</h2>
+  <ul>
+    <li>Less powerful than parametric tests if parametric assumptions are met.</li>
+    <li>Cannot estimate parameters like mean and variance directly.</li>
+  </ul>
+
+  <p><a href="index.html">⬅ Back to Home</a></p>
+</body>
+</html>
