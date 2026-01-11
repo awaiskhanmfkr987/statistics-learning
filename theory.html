@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Statistics Theory & Assumptions</title>
+<meta charset="UTF-8">
+<title>Theory of Statistical Tests</title>
 <style>
-body{font-family:Arial;background:#eef2ff;margin:0}
-nav{background:#2563eb;padding:12px;text-align:center}
-nav a{color:white;margin:10px;text-decoration:none;font-weight:bold}
-section{background:white;margin:20px auto;padding:25px;
-max-width:1000px;border-radius:10px;line-height:1.8}
-h2,h3{color:#2563eb}
+body{font-family:Arial,Helvetica,sans-serif;background:#f8fafc;margin:0;line-height:1.9}
+nav{background:#1e40af;padding:12px;text-align:center}
+nav a{color:white;margin:12px;text-decoration:none;font-weight:bold}
+section{max-width:1150px;margin:20px auto;background:white;padding:35px;border-radius:10px}
+h1,h2,h3{color:#1e3a8a}
+code{background:#eef2ff;padding:4px 6px;border-radius:4px}
+pre{background:#f1f5f9;padding:12px;border-radius:6px;overflow:auto}
+table{border-collapse:collapse;width:100%}
+th,td{border:1px solid #cbd5e1;padding:8px;text-align:left}
+th{background:#e0e7ff}
 </style>
 </head>
 <body>
@@ -21,34 +26,250 @@ h2,h3{color:#2563eb}
 </nav>
 
 <section>
-<h2>📘 Theory, Assumptions & Interpretation</h2>
 
-<h3>Parametric Tests – Assumptions</h3>
+<h1>📗 Comprehensive Theory of Statistical Tests</h1>
+
+<hr>
+
+<h2>I. Foundational Concepts</h2>
+
+<h3>1. Hypothesis Testing Framework</h3>
+<p>
+Statistical hypothesis testing is a formal decision-making framework used to assess evidence against a null model.
+</p>
+
 <ul>
-<li>Data is normally distributed</li>
-<li>Independent observations</li>
-<li>Equal variances (for t-tests & ANOVA)</li>
+<li><b>Null Hypothesis (H₀):</b> No effect or no difference</li>
+<li><b>Alternative Hypothesis (H₁):</b> Effect or difference exists</li>
+<li><b>Significance Level (α):</b> Probability of Type I error (usually 0.05)</li>
+<li><b>p-value:</b> Probability of observing data as extreme as sample, given H₀</li>
+<li><b>Test Statistic:</b> Function of sample data with known distribution under H₀</li>
 </ul>
-
-<h3>Non-Parametric Tests – Assumptions</h3>
-<ul>
-<li>No normality required</li>
-<li>Ordinal or ranked data allowed</li>
-<li>Robust to outliers</li>
-</ul>
-
-<h3>Hypothesis Testing</h3>
-<p><b>Null Hypothesis (H₀):</b> No effect or difference exists.</p>
-<p><b>Alternative Hypothesis (H₁):</b> Effect or difference exists.</p>
 
 <h3>Decision Rules</h3>
 <ul>
-<li>If p-value &lt; 0.05 → Reject H₀</li>
-<li>If test statistic &gt; critical value → Reject H₀</li>
+<li>Reject H₀ if p-value &lt; α</li>
+<li>Reject H₀ if test statistic exceeds critical value</li>
+<li>Reject H₀ if null value not in confidence interval</li>
 </ul>
 
-<h3>Interpretation</h3>
-<p>Statistical significance indicates evidence against H₀, not practical importance.</p>
+<h3>2. Errors and Power</h3>
+<ul>
+<li><b>Type I Error (α):</b> Rejecting true H₀</li>
+<li><b>Type II Error (β):</b> Failing to reject false H₀</li>
+<li><b>Power (1−β):</b> Ability to detect true effects</li>
+</ul>
+
+<hr>
+
+<h2>II. Parametric Tests – Theoretical Foundations</h2>
+
+<h3>1. t-Tests Family</h3>
+
+<p>
+t-tests are based on the <b>Student’s t-distribution</b>, which accounts for uncertainty in estimating population variance.
+</p>
+
+<h4>Properties of t-distribution</h4>
+<ul>
+<li>Symmetric, bell-shaped</li>
+<li>Heavier tails than normal distribution</li>
+<li>Approaches normal distribution as df → ∞</li>
+</ul>
+
+<h4>One-Sample t-Test</h4>
+<pre>
+t = (x̄ − μ₀) / (s / √n)
+df = n − 1
+</pre>
+
+<h4>Independent Samples t-Test</h4>
+<b>Pooled Variance Case:</b>
+<pre>
+t = (x̄₁ − x̄₂) / sₚ√(1/n₁ + 1/n₂)
+df = n₁ + n₂ − 2
+</pre>
+
+<b>Welch’s t-Test:</b>
+<pre>
+t = (x̄₁ − x̄₂) / √(s₁²/n₁ + s₂²/n₂)
+</pre>
+
+<h4>Paired t-Test</h4>
+<pre>
+t = d̄ / (s_d / √n)
+df = n − 1
+</pre>
+
+<hr>
+
+<h3>2. Analysis of Variance (ANOVA)</h3>
+
+<p>
+ANOVA partitions total variability into between-group and within-group components.
+</p>
+
+<h4>One-Way ANOVA Model</h4>
+<pre>
+Xᵢⱼ = μ + τᵢ + εᵢⱼ
+</pre>
+
+<h4>Variance Decomposition</h4>
+<pre>
+SST = SSB + SSW
+F = MSB / MSW
+</pre>
+
+<h4>ANOVA Assumptions</h4>
+<ul>
+<li>Independence</li>
+<li>Normality of residuals</li>
+<li>Homogeneity of variances</li>
+</ul>
+
+<h4>Extensions</h4>
+<ul>
+<li>Two-Way ANOVA (with interaction)</li>
+<li>Repeated Measures ANOVA</li>
+<li>MANOVA</li>
+<li>ANCOVA</li>
+</ul>
+
+<hr>
+
+<h3>3. Correlation and Regression</h3>
+
+<h4>Pearson Correlation</h4>
+<pre>
+r = Σ[(xᵢ−x̄)(yᵢ−ȳ)] / √[Σ(xᵢ−x̄)² Σ(yᵢ−ȳ)²]
+</pre>
+
+<h4>Simple Linear Regression</h4>
+<pre>
+Y = β₀ + β₁X + ε
+β̂ = (X'X)⁻¹X'Y
+</pre>
+
+<hr>
+
+<h2>III. Non-Parametric Tests – Theory</h2>
+
+<h3>1. Rank-Based Tests</h3>
+
+<h4>Mann–Whitney U Test</h4>
+<pre>
+U = min(U₁, U₂)
+z = (U − μ_U) / σ_U
+</pre>
+
+<h4>Wilcoxon Signed-Rank Test</h4>
+<pre>
+T = min(T⁺, T⁻)
+</pre>
+
+<h4>Kruskal–Wallis Test</h4>
+<pre>
+H = [12/(N(N+1))] Σ(Rᵢ²/nᵢ) − 3(N+1)
+</pre>
+
+<hr>
+
+<h3>2. Chi-Square Tests</h3>
+
+<h4>Goodness of Fit</h4>
+<pre>
+χ² = Σ (O − E)² / E
+</pre>
+
+<h4>Test of Independence</h4>
+<pre>
+df = (r − 1)(c − 1)
+</pre>
+
+<h4>Fisher’s Exact Test</h4>
+<p>
+Used for small samples based on hypergeometric distribution.
+</p>
+
+<hr>
+
+<h3>3. Rank Correlation</h3>
+
+<h4>Spearman’s ρ</h4>
+<pre>
+ρ = 1 − 6Σd² / [n(n² − 1)]
+</pre>
+
+<h4>Kendall’s τ</h4>
+<pre>
+τ = (C − D) / [n(n − 1)/2]
+</pre>
+
+<hr>
+
+<h2>IV. Comparative Theory</h2>
+
+<table>
+<tr>
+<th>Aspect</th>
+<th>Parametric</th>
+<th>Non-Parametric</th>
+</tr>
+<tr>
+<td>Efficiency</td>
+<td>High (assumptions met)</td>
+<td>Slightly lower</td>
+</tr>
+<tr>
+<td>Robustness</td>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Outliers</td>
+<td>Sensitive</td>
+<td>Resistant</td>
+</tr>
+</table>
+
+<hr>
+
+<h2>V. Multiple Testing Theory</h2>
+
+<ul>
+<li><b>Bonferroni:</b> α/m</li>
+<li><b>Holm’s Method:</b> Step-down correction</li>
+<li><b>Benjamini-Hochberg:</b> Controls FDR</li>
+</ul>
+
+<hr>
+
+<h2>VI. Bayesian & Modern Theory</h2>
+
+<ul>
+<li><b>Bayes Factor:</b> BF₁₀ = P(Data|H₁)/P(Data|H₀)</li>
+<li><b>Bootstrap:</b> Resampling to estimate distributions</li>
+<li><b>Permutation Tests:</b> Exact non-parametric inference</li>
+<li><b>Robust Statistics:</b> M-estimators, trimmed means</li>
+</ul>
+
+<hr>
+
+<h2>VII. Key Theoretical Insights</h2>
+
+<ul>
+<li>All tests are decision rules balancing Type I & Type II errors</li>
+<li>Non-parametric tests trade efficiency for robustness</li>
+<li>Parametric tests are likelihood-based under strong assumptions</li>
+<li>Modern statistics blends frequentist, Bayesian & computational methods</li>
+</ul>
+
+<h2>VIII. Conclusion</h2>
+
+<p>
+Understanding theoretical foundations ensures correct test selection,
+valid inference, and proper interpretation across scientific disciplines.
+</p>
 
 </section>
 </body>
