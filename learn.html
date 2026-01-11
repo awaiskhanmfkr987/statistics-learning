@@ -2,21 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Learn Advanced Statistics – Definitions & Explanations</title>
+<title>Learn Statistics – Complete Guide</title>
 <style>
-body{font-family:Arial,Helvetica,sans-serif;background:#eef2ff;margin:0}
+body{font-family:Arial;background:#f8fafc;margin:0;line-height:1.8}
 nav{background:#2563eb;padding:12px;text-align:center}
-nav a{color:white;margin:10px;text-decoration:none;font-weight:bold}
-section{
-background:white;
-margin:20px auto;
-padding:30px;
-max-width:1000px;
-border-radius:10px;
-line-height:1.9
-}
-h2,h3{color:#2563eb}
-p{margin-bottom:15px}
+nav a{color:white;margin:12px;text-decoration:none;font-weight:bold}
+section{max-width:1100px;margin:20px auto;background:white;padding:30px;border-radius:10px}
+h1,h2,h3{color:#1e3a8a}
+ul{margin-left:20px}
+code{background:#eef2ff;padding:3px 6px;border-radius:4px}
 </style>
 </head>
 <body>
@@ -29,72 +23,171 @@ p{margin-bottom:15px}
 </nav>
 
 <section>
-<h2>📘 Learn Advanced Statistics – Concepts & Definitions</h2>
 
-<!-- ================= Z-TESTS ================= -->
-<h3>1. Z-Tests</h3>
-<p>Used primarily for large sample sizes (n>30) or when the population variance is known.</p>
+<h1>📘 Comprehensive Guide to Statistical Tests</h1>
 
-<p><b>One-Sample Z-Test:</b> Compares a sample mean to a known population mean to determine if there is a significant difference.</p>
-
-<p><b>Two-Sample Z-Test:</b> Compares the means of two independent samples to determine whether they differ significantly.</p>
-
-<p><b>Z-Proportion Test:</b> Compares the population proportions to test if they differ from each other.</p>
-
-<hr>
-
-<!-- ================= STUDENT’S T-TESTS ================= -->
-<h3>2. Student’s T-Tests</h3>
-<p>Used for smaller sample sizes or when the population variance is unknown.</p>
-
-<p><b>One-Sample T-Test:</b> Compares a sample mean to a hypothesized value.</p>
-
-<p><b>Independent (Two-Sample) T-Test:</b> Compares the means of two distinct independent groups.</p>
-
-<p><b>Paired (Dependent) T-Test:</b> Compares means from the same group measured at different times or under different conditions.</p>
-
-<p><b>Welch’s T-Test:</b> A variation of the independent t-test used when equal variance assumption (homoscedasticity) is violated.</p>
-
-<hr>
-
-<!-- ================= ANOVA ================= -->
-<h3>3. Analysis of Variance (ANOVA)</h3>
-<p>Used to compare the means of three or more groups.</p>
-
-<p><b>One-Way ANOVA:</b> Compares means across three or more groups based on one factor.</p>
-
-<p><b>Two-Way ANOVA:</b> Compares means based on two independent factors and examines interaction between them.</p>
-
-<p><b>Repeated Measures ANOVA:</b> Used when the same subjects are measured multiple times under different conditions.</p>
-
-<p><b>MANOVA (Multivariate ANOVA):</b> Extension of ANOVA for multiple dependent variables.</p>
-
-<p><b>ANCOVA (Analysis of Covariance):</b> Combines ANOVA and regression to control for effects of continuous covariates.</p>
-
-<hr>
-
-<!-- ================= CORRELATION & REGRESSION ================= -->
-<h3>4. Correlation and Regression</h3>
-
-<p><b>Pearson’s Correlation (r):</b> Measures strength and direction of linear relationship between two continuous variables.</p>
-
-<p><b>Linear Regression:</b> Models the relationship between a dependent variable and one or more independent variables; can be used for prediction and interpretation of associations.</p>
-
-<hr>
-
-<!-- ================= OTHER PARAMETRIC TESTS ================= -->
-<h3>5. Other Parametric Tests</h3>
-
-<p><b>F-Test:</b> Used to compare variances of two populations; also forms the basis for ANOVA.</p>
-
-<p><b>Chow Test:</b> Used in econometrics to determine if coefficients in two linear regressions on different datasets are equal.</p>
-
-<hr>
-
-<h3>🎯 Summary</h3>
+<h2>I. Introduction to Statistical Tests</h2>
 <p>
-This page provides detailed conceptual understanding of advanced parametric tests including <b>Z-tests, T-tests, ANOVA, correlation, regression, and other parametric methods</b>.  
-It explains <b>when to use each test, assumptions required, and the key purpose</b>.
+Statistical tests are inferential tools used to draw conclusions about a population using sample data.
+They help researchers decide whether observed differences, relationships, or patterns are real or occurred by chance.
+</p>
+
+<hr>
+
+<h2>II. Parametric Tests</h2>
+
+<p>
+<b>Definition:</b> Parametric tests assume that data follows a specific distribution (usually normal)
+and that population parameters such as mean and variance exist.
+</p>
+
+<h3>Key Assumptions</h3>
+<ul>
+<li>Normality of data</li>
+<li>Homogeneity of variance</li>
+<li>Interval or ratio scale measurement</li>
+<li>Independence of observations</li>
+</ul>
+
+<h3>1. Z-Tests</h3>
+<p>
+Used when sample size is large (<b>n ≥ 30</b>) or population variance is known.
+</p>
+<ul>
+<li><b>One-Sample Z-Test:</b> Compares sample mean with population mean</li>
+<li><b>Two-Sample Z-Test:</b> Compares means of two independent samples</li>
+<li><b>Z-Proportion Test:</b> Compares population proportions</li>
+</ul>
+
+<h3>2. Student’s T-Tests</h3>
+<p>
+Used when sample size is small and population variance is unknown.
+</p>
+<ul>
+<li><b>One-Sample T-Test:</b> Compares sample mean with hypothesized value</li>
+<li><b>Independent T-Test:</b> Compares means of two independent groups</li>
+<li><b>Paired T-Test:</b> Compares the same group before and after treatment</li>
+<li><b>Welch’s T-Test:</b> Used when variances are unequal</li>
+</ul>
+
+<h3>3. Analysis of Variance (ANOVA)</h3>
+<p>
+Used to compare means of three or more groups.
+</p>
+<ul>
+<li><b>One-Way ANOVA:</b> One independent factor</li>
+<li><b>Two-Way ANOVA:</b> Two independent factors and interaction</li>
+<li><b>Repeated Measures ANOVA:</b> Same subjects measured repeatedly</li>
+<li><b>MANOVA:</b> Multiple dependent variables</li>
+<li><b>ANCOVA:</b> Controls covariates</li>
+</ul>
+
+<h3>4. Correlation & Regression</h3>
+<ul>
+<li><b>Pearson Correlation (r):</b> Linear relationship between two continuous variables</li>
+<li><b>Simple Linear Regression:</b> Predicts outcome using one predictor</li>
+<li><b>Multiple Regression:</b> Uses multiple predictors</li>
+</ul>
+
+<hr>
+
+<h2>III. Non-Parametric Tests</h2>
+
+<p>
+<b>Definition:</b> Non-parametric tests do not assume any specific data distribution and are suitable
+for ordinal, nominal, or skewed data.
+</p>
+
+<h3>When to Use</h3>
+<ul>
+<li>Small samples</li>
+<li>Non-normal data</li>
+<li>Outliers present</li>
+<li>Ordinal or categorical data</li>
+</ul>
+
+<h3>1. Independent Samples</h3>
+<ul>
+<li><b>Mann–Whitney U Test:</b> Alternative to independent t-test</li>
+<li><b>Kruskal–Wallis Test:</b> Alternative to one-way ANOVA</li>
+</ul>
+
+<h3>2. Paired Samples</h3>
+<ul>
+<li><b>Wilcoxon Signed-Rank Test:</b> Alternative to paired t-test</li>
+<li><b>Friedman Test:</b> Alternative to repeated measures ANOVA</li>
+</ul>
+
+<h3>3. Correlation</h3>
+<ul>
+<li><b>Spearman Rank Correlation:</b> Measures monotonic relationship</li>
+<li><b>Kendall’s Tau:</b> Rank-based correlation</li>
+</ul>
+
+<h3>4. Categorical Tests</h3>
+<ul>
+<li><b>Chi-Square Test:</b> Association between categorical variables</li>
+<li><b>Fisher’s Exact Test:</b> Small sample alternative</li>
+<li><b>McNemar’s Test:</b> Paired categorical data</li>
+</ul>
+
+<h3>5. Other Non-Parametric Tests</h3>
+<ul>
+<li>Sign Test</li>
+<li>Runs Test</li>
+<li>Kolmogorov–Smirnov Test</li>
+</ul>
+
+<hr>
+
+<h2>IV. Other Important Statistical Methods</h2>
+
+<ul>
+<li><b>Bayesian Statistics:</b> Uses probability distributions instead of p-values</li>
+<li><b>Bootstrapping & Permutation Tests:</b> Resampling methods</li>
+<li><b>Time Series Tests:</b> ADF, Granger Causality, Ljung–Box</li>
+<li><b>Survival Analysis:</b> Log-rank test, Cox model</li>
+<li><b>Multivariate Analysis:</b> MANOVA, Factor Analysis, Cluster Analysis</li>
+</ul>
+
+<hr>
+
+<h2>V. Test Selection Framework</h2>
+
+<p>
+<b>Key questions to choose the correct test:</b>
+</p>
+<ul>
+<li>What is the data type? (Continuous / Ordinal / Categorical)</li>
+<li>How many groups are compared?</li>
+<li>Are samples independent or paired?</li>
+<li>Are assumptions satisfied?</li>
+</ul>
+
+<hr>
+
+<h2>VI. Key Considerations</h2>
+
+<ul>
+<li><b>Normality:</b> Shapiro–Wilk, Q–Q plots</li>
+<li><b>Variance equality:</b> Levene’s test</li>
+<li><b>Effect Size:</b> Cohen’s d, Eta², Cramer’s V</li>
+<li><b>Statistical Power:</b> Probability of detecting real effects</li>
+</ul>
+
+<hr>
+
+<h2>VII. Conclusion</h2>
+
+<p>
+Selecting the correct statistical test depends on data type, sample size,
+distribution, and research design.
+</p>
+
+<p>
+<b>Rule of Thumb:</b><br>
+✔ Parametric tests → more powerful when assumptions are met<br>
+✔ Non-parametric tests → safer when assumptions are violated
 </p>
 
 </section>
