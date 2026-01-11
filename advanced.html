@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced & Specialized Tests</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; background: #fdfdfd; }
+  h1,h2,h3 { color: #2c3e50; }
+  a { text-decoration: none; color: #2980b9; }
+  a:hover { text-decoration: underline; }
+  pre { background: #eee; padding: 10px; border-radius: 5px; }
+</style>
+</head>
+<body>
+  <h1>IV. Advanced and Specialized Tests</h1>
+
+  <h2>1. Bayesian Hypothesis Testing</h2>
+  <p>Uses prior information and observed data to update beliefs about hypotheses.</p>
+  <pre>Bayes Factor: BF₁₀ = P(data|H₁)/P(data|H₀)</pre>
+  <p>Interpretation:</p>
+  <ul>
+    <li>BF > 1: Evidence favors H₁</li>
+    <li>BF < 1: Evidence favors H₀</li>
+    <li>BF ≈ 1: Inconclusive</li>
+  </ul>
+  <p>Posterior Probability:</p>
+  <pre>P(H₁|data) = [BF₁₀ × prior odds] / [1 + BF₁₀ × prior odds]</pre>
+
+  <h2>2. Resampling Methods</h2>
+  <h3>A. Bootstrap</h3>
+  <p>Generates repeated samples to estimate the sampling distribution of a statistic.</p>
+  <pre>
+Nonparametric: Resample with replacement from data
+Parametric: Resample from fitted model
+p-value = proportion of bootstrap statistics ≥ observed
+  </pre>
+  <h3>B. Permutation Tests</h3>
+  <p>Tests exact null distribution by permuting labels.</p>
+  <pre>
+Exact permutation: enumerate all permutations
+Monte Carlo: sample random permutations
+Assumes exchangeability under H₀
+  </pre>
+
+  <h2>3. Time Series Tests</h2>
+  <h3>Stationarity Tests</h3>
+  <ul>
+    <li>Augmented Dickey-Fuller (ADF): H₀ = unit root (non-stationary)</li>
+    <li>KPSS: H₀ = stationary</li>
+    <li>Phillips-Perron: Nonparametric correction for autocorrelation</li>
+  </ul>
+  <h3>Cointegration Tests</h3>
+  <ul>
+    <li>Engle-Granger two-step</li>
+    <li>Johansen VAR-based test</li>
+  </ul>
+  <h3>Causality Tests</h3>
+  <ul>
+    <li>Granger causality: F-test in VAR</li>
+    <li>Transfer entropy: Information-theoretic measure</li>
+  </ul>
+
+  <h2>4. Survival Analysis Tests</h2>
+  <h3>Log-Rank Test</h3>
+  <pre>χ² = Σ((Oᵢ - Eᵢ)² / Eᵢ)</pre>
+  <h3>Wilcoxon-Breslow-Gehan</h3>
+  <p>Weights by risk set size</p>
+  <h3>Cox Proportional Hazards</h3>
+  <pre>h(t|x) = h₀(t) * exp(β'x)</pre>
+  <h3>Accelerated Failure Time Models</h3>
+  <pre>log T = β'x + σε</pre>
+
+  <h2>5. Multivariate Tests</h2>
+  <h3>Hotelling's T²</h3>
+  <pre>T² = n * (x̄ - μ₀)' S⁻¹ (x̄ - μ₀)</pre>
+  <h3>MANOVA</h3>
+  <pre>
+Wilks' Lambda: Λ = |E| / |E + H|
+Pillai's Trace: V = trace[H(H+E)⁻¹]
+Hotelling-Lawley Trace: U = trace[E⁻¹H]
+Roy's Largest Root: θ = largest eigenvalue of E⁻¹H
+  </pre>
+  <h3>Discriminant Analysis</h3>
+  <p>Maximizes ratio of between-group variance to within-group variance.</p>
+
+  <h2>6. Robust Statistical Tests</h2>
+  <ul>
+    <li>M-estimators: Minimize Σρ(xᵢ, θ)</li>
+    <li>Influence Function: Measures sensitivity to contamination</li>
+    <li>Trimmed/Winsorized t-tests: Reduce effect of outliers</li>
+    <li>R-estimators: Based on ranks</li>
+  </ul>
+
+  <p><a href="index.html">⬅ Back to Home</a></p>
+</body>
+</html>
